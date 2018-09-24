@@ -4,7 +4,7 @@ a = 5
 #функций foo_1 и foo_2(глобальных)
 #в результате должно быть 27
 def foo_1():
-    a = 0
+    global a
     a += 1
     def bar_1():
         a = 0
@@ -13,28 +13,32 @@ def foo_1():
             a = 0
             a -= 1
             def bun_1():
-                a = 0
+                global a
                 a += 2
-            bar_1()
-        foo_1()
+            bun_1()
+        fun_1()
     bar_1()
+foo_1()
 foo_1()
 
 def foo_2():
     a = 0
     a -= 3
     def bar_2():
-        a = 0
+        global a
         a += 5
         def fun_2():
-            a = 0
+            global a
             a += 3
             def bun_2():
                 a = 0
                 a -= 5
-            bar_2()
-        foo_2()
+            bun_2()
+        fun_2()
+
     bar_2()
 foo_2()
+foo_2()
+
 
 print(a)
